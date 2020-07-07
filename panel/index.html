@@ -1,0 +1,29 @@
+<ui-button @confirm="onConfirm">检查依赖</ui-button>
+<div style="height: 100%;overflow-y: auto;">
+    <div v-for="package in packages">
+        <h3 v-on:click="locateFile(packageMap.get(package.name).path)">{{ package.name }}</h3>
+        <hr>
+        <div v-for="dep in package.deps" style="padding-left: 20px;">
+            <h4 v-on:click="locateFile(fileMap.get(dep.module).path)">{{ dep.module }}[{{fileMap.get(dep.module).package}}]</h4>
+            <li v-for="file in dep.list"><a v-on:click="locateFile(file)">{{ file }}</a></li>
+        </div>
+    </div>
+    <h3 v-if="pacakge && packages.length == 0">无依赖</h3>
+    <hr>
+    <ui-markdown>
+        # 子包依赖解决方案
+        - 将依赖文件移入主包
+        - 将依赖模块导入声明，改为动态导入
+        ```
+        // 改动前
+        import m from 'm';
+    
+        // 改动后
+        let m;
+    
+        onLoad() {
+            m = require('m');
+        }
+        ```
+    </ui-markdown>
+</div>

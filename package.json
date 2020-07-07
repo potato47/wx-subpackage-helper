@@ -1,0 +1,19 @@
+{
+  "name": "wx-subpackage-helper",
+  "version": "0.0.1",
+  "description": "The tool for checking deps of wx-subpackages.",
+  "author": "Next",
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.package.title/wx-subpackage-helper/open": {
+      "message": "wx-subpackage-helper:open"
+    }
+  },
+  "panel": {
+    "main": "panel/index.js",
+    "type": "dockable",
+    "title": "wx-subpackage-helper",
+    "width": 600,
+    "height": 800
+  }
+}
